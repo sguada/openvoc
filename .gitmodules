@@ -1,6 +1,7 @@
 [submodule "caffe"]
 	path = caffe
 	url = https://github.com/BVLC/caffe
+	branch = dev
 [submodule "rcnn"]
 	path = rcnn
 	url = https://github.com/rbgirshick/rcnn
