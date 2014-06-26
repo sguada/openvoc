@@ -6,3 +6,7 @@
 	path = rcnn
 	url = https://github.com/rbgirshick/rcnn
 	branch = ilsvrc
+[submodule "giss"]
+	path = giss
+	url = https://github.com/erodner/giss
+	branch = master
