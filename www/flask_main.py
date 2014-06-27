@@ -54,11 +54,12 @@ def classify_url():
                                      has_result=True,
                                      result=(False, 'Cannot open image from URL.'))
     logging.info('Image: %s', imageurl)
-    result = classify_image(filename)
+    result, outfname = classify_image(filename)
+    outimage = io.imread(outfname)
     return flask.render_template('index.html',
                                  has_result=True,
                                  result=result,
-                                 imagesrc=imageurl)
+                                 imagesrc=embed_image_html(outimage))
 
 @app.route('/classify_upload', methods=['POST'])
 def classify_upload():
@@ -77,11 +78,12 @@ def classify_upload():
         return flask.render_template('index.html',
                                      has_result=True,
                                      result=(False, 'Cannot open uploaded image.'))
-    result = classify_image(filename)
+    result, outfname = classify_image(filename)
+    outimage = io.imread(outfname)
     return flask.render_template('index.html',
                                  has_result=True,
                                  result=result,
-                                 imagesrc=embed_image_html(image))
+                                 imagesrc=embed_image_html(outimage))
 
 def embed_image_html(image):
     """Creates an image embedded in HTML base64 format."""
@@ -106,29 +108,34 @@ def classify_image(filename):
         # do stuff here
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect(('localhost', 9999))
-        id_string = "from: webapp"
-        to_string = "to: webapp"
+        id_string = "from: web"
+        to_string = "to: matlab"
         print "Connected, sending id ", id_string
         data = id_string + "\n" + to_string + "\n"
         l = "%8d" % len(data)
         sock.sendall(l)
         sock.sendall(data)
         struct = {}
-        struct["from"] = 'webapp'
-        struct["to"] = 'webapp'
-        struct["subject"] = filename
+        struct["from"] = 'web'
+        struct["to"] = 'matlab'
+        struct["subject"] = 'image'
+        struct["image"] = filename
         data = yaml.dump(struct)
         print "Id sent, sending message: ", data
-        l = "%8d" % len(data)    
+        l = "%8d" % len(data)
         sock.sendall(l)
         sock.sendall(data)
         print "Now listening for some stuff"
         while True:
+            # add timeout logic
             data = sock.recv(4096)
             if data:
                 break
             time.sleep(0.1)
         print "data received: ", data
+        data = data[data.index('{'):]
+        print data
+        info = yaml.load(data)
 
         # placeholder results
         scores = [1] # placeholder
@@ -142,10 +149,10 @@ def classify_image(filename):
     except Exception as err:
         logging.info('Classification error: %s', err)
         return (False, 'Oops, something wrong happened with classifying the'
-                       ' image. Maybe try another one?')
+                       ' image. Maybe try another one?'), None
     # If everything is successful, return the results
     endtime = time.time()
-    return (True, meta, '%.3f' % (endtime-starttime))
+    return (True, meta, '%.3f' % (endtime-starttime)), info['display']
 
 if __name__ == '__main__':
     gflags.FLAGS(sys.argv)
