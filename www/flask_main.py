@@ -14,6 +14,7 @@ import sys
 import time
 from tempfile import mkstemp
 import urllib
+import util
 from werkzeug import secure_filename
 import yaml
 
@@ -106,36 +107,16 @@ def classify_image(filename):
     try:
         starttime = time.time()
         # do stuff here
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(('localhost', 9999))
-        id_string = "from: web"
-        to_string = "to: matlab"
-        print "Connected, sending id ", id_string
-        data = id_string + "\n" + to_string + "\n"
-        l = "%8d" % len(data)
-        sock.sendall(l)
-        sock.sendall(data)
+        conn = util.Connection('web')
+        conn.open()
         struct = {}
         struct["from"] = 'web'
         struct["to"] = 'matlab'
         struct["subject"] = 'image'
         struct["image"] = filename
-        data = yaml.dump(struct)
-        print "Id sent, sending message: ", data
-        l = "%8d" % len(data)
-        sock.sendall(l)
-        sock.sendall(data)
+        conn.send(struct)
         print "Now listening for some stuff"
-        while True:
-            # add timeout logic
-            data = sock.recv(4096)
-            if data:
-                break
-            time.sleep(0.1)
-        print "data received: ", data
-        data = data[data.index('{'):]
-        print data
-        info = yaml.load(data)
+        info = conn.recv()
 
         # placeholder results
         scores = [1] # placeholder
@@ -158,7 +139,7 @@ if __name__ == '__main__':
     gflags.FLAGS(sys.argv)
     # try to make the upload directory.
     try:
-        os.makedirs(UPLOAD_FOLDER)
+        os.makedirs(FLAGS.upload_folder)
     except Exception as err:
         pass
     logging.getLogger().setLevel(logging.INFO)
