@@ -64,14 +64,14 @@ a:hover {
 }
 
 header {
-  padding-top: 35px;
-  padding-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 15px;
 }
 
 header h1 {
   font-family: 'Chivo', 'Helvetica Neue', Helvetica, Arial, serif; font-weight: 900;
   letter-spacing: -1px;
-  font-size: 48px;
+  font-size: 44px;
   color: #303030;
   line-height: 1.2;
 }
@@ -90,7 +90,7 @@ header h2 {
 }
 
 .inner {
-  width: 620px;
+  width: 750px;
   margin: 0 auto;
 }
 
@@ -99,7 +99,7 @@ header h2 {
 }
 
 #downloads {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 a.button {
