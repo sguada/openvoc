@@ -1,12 +1,12 @@
 [submodule "caffe"]
 	path = caffe
 	url = https://github.com/BVLC/caffe
-	branch = dev
-[submodule "rcnn"]
-	path = rcnn
-	url = https://github.com/rbgirshick/rcnn
-	branch = ilsvrc
+	branch = master
 [submodule "giss"]
 	path = giss
 	url = https://github.com/erodner/giss
 	branch = master	
+[submodule "fqe"]
+        path = fqe
+        url = https://github.com/erodner/fqe
+        branch = master
