@@ -46,6 +46,7 @@ def classify_url():
             urllib.urlopen(imageurl).read())
         image = io.imread(string_buffer)
         handle, filename = mkstemp(suffix='.png', prefix=os.path.join(FLAGS.upload_folder, ''))
+        os.chmod(filename, 0755)
         io.imsave(filename, image)
     except Exception as err:
         # For any exception we encounter in reading the image, we will just
