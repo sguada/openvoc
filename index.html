@@ -21,6 +21,7 @@
         <header>
           <h1>Open-Vocabulary Object Retrieval</h1>
           <h2>Published at <a href=http://www.roboticsconference.org/>Robotics Science and Systems (RSS 2014)</a>.</h2>
+          <h2>Presented also at <a href="http://www.aaai.org/Conferences/AAAI/aaai15.php">AAAI 2015</a>.</h2>
         </header>
 
         <section id="downloads" class="clearfix">
@@ -35,7 +36,7 @@
 <h2>
 <a href=Open-Vocabulary_Object_Retrieval_RSS-2014.pdf>Open-Vocabulary Object Retrieval.</a> </h2>
 <p>
-<a href=http://www.eecs.berkeley.edu/~sguada/>Sergio Guadarrama</a>, <a href=https://sites.google.com/site/erikrodner/>Erik Rodner</a>, <a href=http://www.cs.uml.edu/~saenko/>Kate Saenko</a>, <a href=http://www.cs.berkeley.edu/~nzhang/>Ning Zhang</a>,<br> <a href=http://faculty.cs.byu.edu/~farrell/>Ryan Farrell</a>, <a href=http://jeffdonahue.com/>Jeff Donahue</a> and <a href=http://www.eecs.berkeley.edu/~trevor>Trevor Darrell</a>. <br> 
+<a href=http://www.eecs.berkeley.edu/~sguada/>Sergio Guadarrama</a>, <a href="http://www.erodner.de">Erik Rodner</a>, <a href=http://www.cs.uml.edu/~saenko/>Kate Saenko</a>, <a href=http://www.cs.berkeley.edu/~nzhang/>Ning Zhang</a>,<br> <a href=http://faculty.cs.byu.edu/~farrell/>Ryan Farrell</a>, <a href=http://jeffdonahue.com/>Jeff Donahue</a> and <a href=http://www.eecs.berkeley.edu/~trevor>Trevor Darrell</a>. <br> 
 </p>
 
 <a href=http://www.eecs.berkeley.edu/~sguada/><img height=100px src=images/sergio.jpg></a>
@@ -54,7 +55,7 @@ We address this limitation by introducing a novel object retrieval method
 and we also propose a method for handling open-vocabularies, i.e., words not contained in the training data. Our method can combine category- and instance-level semantics in a common representation. Our approach can accurately retrieve objects based on extremely varied open-vocabulary queries. 
 </p>
 <p>
-The source code of our approach will be available on this webpage together with pre-trained models and can be directly used for robotics applications.</b>
+We are currently preparing an extended version of the paper and code will be released afterwards.
 </p>
 
 <section id="poset" class="inner">
@@ -77,17 +78,17 @@ The source code of our approach will be available on this webpage together with 
   </section>
           
         </section>
-    <section id="demo" class="inner">
-    <h3>Demo</h3>
+
+    <section id="presentation" class="inner">
+    <h3>Presentation slides</h3>
     <p>
-    A live demonstration of our system is currently under preparation.
-    </p>
+    A very brief talk about the project was given by Erik at AAAI 2015. The slides can be found <a href="http://erodner.github.io/researchpage/presentation/presentation-rss.pdf">here</a>.
     </section>
 
     <section id="models" class="inner">
     <h3>Pre-trained models</h3>
     <p>
-    Pre-trained ImageNet models will be provided soon on this page.
+    Pre-trained ImageNet models can be found on the <a href="http://caffe.berkeleyvision.org">Caffe</a> webpage.
     </p>
 
     <section id="extsoftware" class="inner">
@@ -95,13 +96,13 @@ The source code of our approach will be available on this webpage together with 
     <ul>
     <li><a href="http://caffe.berkeleyvision.org">Caffe</a> - for category recognition with deep convolutional networks</li>
     <li><a href="https://github.com/erodner/giss">GISS</a> - google image-by-image search (scraper)</li>
-    <li>Freebase - for query expansion</li>
-    <li>For the experiments in the paper, we also made use of the iqengines API for instance-level matching.</li>
+    <li><a href="https://developers.google.com/freebase/">Google Freebase</a> - for query expansion</li>
+    <li>For the experiments in the paper, we also made use of the iq-engines API for instance-level matching, which now belongs to yahoo</li>
     </section>
 
     <section id="bibtex" class="inner">
     <h3>Bibtex</h3>
-    If you use the software or the pre-trained models provided on this webpage, please cite the following paper:
+    If you use the software provided on this webpage, please cite the following paper:
     <pre>
 @inproceedings{Guadarrama14:OOR,
   author = {Sergio Guadarrama and Erik Rodner and Kate Saenko and Ning Zhang and Ryan Farrell and Jeff Donahue and Trevor Darrell},
