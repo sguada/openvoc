@@ -1,0 +1,4 @@
+models/*
+third_party/SelectiveSearchCodeIJCV/
+third_party/huang_wordemb/
+external/caffe/
