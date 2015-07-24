@@ -2,10 +2,6 @@
 	path = caffe
 	url = https://github.com/BVLC/caffe
 	branch = master
-[submodule "giss"]
-	path = giss
-	url = https://github.com/erodner/giss
-	branch = master	
 [submodule "fqe"]
         path = fqe
         url = https://github.com/erodner/fqe
