@@ -37,7 +37,7 @@ end
 if exist('external/caffe/matlab/caffe','dir')
   addpath('external/caffe/matlab/caffe');
 else
-  warning('Please install Caffe in ./external/caffe');
+  error('Please install Caffe in ./external/caffe');
 end
 
 % Adding folders to path
@@ -49,7 +49,7 @@ addpath('Maps');
 addpath('utils');
 addpath('third_party/jsonlab/')
 
-if ~exist('./models/caffe_dda_imagenet7k_200.model.mat','file')
+if exist('external/caffe/matlab/caffe','dir') && ~exist('./models/caffe_dda_imagenet7k_200.model.mat','file')
   fprintf('Warning: you will need the models/caffe_dda_imagenet7k_200.model.mat .\n');
   fprintf('Press any key to create it and save it> ');
   pause;
