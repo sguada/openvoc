@@ -11,7 +11,7 @@ if nargin < 3
 end
 
 web_dir = 'http://www.icsi.berkeley.edu/~sguada/openvoc/';
-base_dir = '/home/sguada/Projects/openvoc/giss';
+base_dir = 'giss';
 test_file = fullfile(base_dir,'test.sh');
 fid = fopen(test_file,'w');
 command_str = sprintf('python %s/gis-scrape.py --useragents %s/useragents.txt',...

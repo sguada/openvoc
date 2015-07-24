@@ -1,11 +1,7 @@
 function open_vocab_demo(test_case)
 persistent rcnn_model
 if isempty(rcnn_model)
-<<<<<<< HEAD
     load('models/caffe_dda_imagenet7k_200.model.mat');
-=======
-    load('models/rcnn_model7200');
->>>>>>> 96325a5... Added main demo and sample images
 end
 
 crops_dir = 'crops';

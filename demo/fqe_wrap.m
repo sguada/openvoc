@@ -6,7 +6,7 @@ if nargin < 2
     query = 'Pasta box';
 end
 
-base_dir = '/home/sguada/Projects/openvoc/fqe';
+base_dir = 'fqe';
 test_file = fullfile(base_dir,'test.sh');
 fid = fopen(test_file,'w');
 command_str = sprintf('python %s/freebase-extend-descriptions.py --src %s-src.json --dst %s-dst.json',...
